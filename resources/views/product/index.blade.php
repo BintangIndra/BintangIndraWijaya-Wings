@@ -39,7 +39,7 @@
                         {{ $val->Discount }}<br>
                     </div>
                     <div class="col-lg-2">
-                        <button class="btn btn-primary" style="height:100%;width:100%;" onclick=()>Buy</button>
+                        <button class="btn btn-primary" style="height:100%;width:100%;" onclick="addToCart(`{{ $val->Product_code }}`)">Buy</button>
                     </div>
                 </div>
             @endforeach
@@ -72,7 +72,7 @@
                     <div class="col-lg-6 mb-2">
                     </div>
                     <div class="col-lg-6 mb-2">
-                        <button class="btn btn-primary" style="height:100%;width:100%;" onclick=()>Buy</button>
+                        <button class="btn btn-primary" style="height:100%;width:100%;" onclick="addToCart(`{{ $val->Product_code }}`)">Buy</button>
                     </div>
                 </div>
             </div>
@@ -81,6 +81,17 @@
 </div>
 
 <script>
+    var cart = [];
+    function addToCart(params) {
+        if (cart[params] == undefined) {
+            cart[params] = 1; 
+        }else{
+            cart[params] += 1;
+        }
+        
+        console.log(cart[params]);
+    }
+
     function openDetail(id) {
         $.ajax({
             url: "{{ route('product.show') }}",
