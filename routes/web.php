@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -30,4 +31,5 @@ Route::group([
     'controller' => ProductController::class,
 ],function () {
     Route::get('/index', 'index')->name('index');
+    Route::get('/detail', 'detail')->name('detail');
 });
