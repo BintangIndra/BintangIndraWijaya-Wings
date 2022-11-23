@@ -31,5 +31,5 @@ Route::group([
     'controller' => ProductController::class,
 ],function () {
     Route::get('/index', 'index')->name('index');
-    Route::get('/detail', 'detail')->name('detail');
+    Route::get('/show', 'show')->name('show');
 });

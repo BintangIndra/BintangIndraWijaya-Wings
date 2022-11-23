@@ -39,7 +39,7 @@
                         {{ $val->Discount }}<br>
                     </div>
                     <div class="col-lg-2">
-                        <button class="btn btn-primary" style="height:100%;width:100%;">Buy</button>
+                        <button class="btn btn-primary" style="height:100%;width:100%;" onclick=()>Buy</button>
                     </div>
                 </div>
             @endforeach
@@ -72,7 +72,7 @@
                     <div class="col-lg-6 mb-2">
                     </div>
                     <div class="col-lg-6 mb-2">
-                        <button class="btn btn-primary" style="height:100%;width:100%;">Buy</button>
+                        <button class="btn btn-primary" style="height:100%;width:100%;" onclick=()>Buy</button>
                     </div>
                 </div>
             </div>
@@ -81,22 +81,24 @@
 </div>
 
 <script>
-
     function openDetail(id) {
         $.ajax({
-            url: "{{ route('product.detail') }}",
+            url: "{{ route('product.show') }}",
             data: {
-                data : 'detail',
+                data : 'detail',    
                 idTransaksi : id,
             },
             success:function(data){
-                console.log(data);
+                $('#detailNamaBarang').html(data.Product_Name);
+                $('#detailHarga').html(data.Price);
+                $('#detailDimension').html(data.Dimension);
+                $('#detailUnit').html(data.Unit);
+
             }
         });
 
         $('#detailBarang').modal('show');
     }
-
 </script>
 
 @endsection

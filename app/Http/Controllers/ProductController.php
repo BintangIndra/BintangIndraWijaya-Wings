@@ -49,7 +49,11 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        
+        if (request()->ajax() && request()->data == 'detail' ) {
+            $data = product::find(request()->idTransaksi);
+
+            return $data;
+        }
     }
 
     /**
